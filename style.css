@@ -1,0 +1,347 @@
+/* style.css */
+
+/* --- Variables y Estilos Globales --- */
+:root {
+    --primary-color: #0D2C4D;
+    --secondary-color: #1A5A96;
+    --accent-color: #3E92CC;
+    --background-color: #F4F7F9;
+    --text-color: #333333;
+    --card-bg-color: #FFFFFF;
+    --font-header: 'Lato', sans-serif;
+    --font-body: 'Merriweather', serif;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.7;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-header);
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+h2 {
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+h2 .fas {
+    margin-right: 10px;
+}
+
+.card {
+    background: var(--card-bg-color);
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+}
+
+/* --- Header --- */
+header {
+    background: var(--primary-color);
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+}
+header h1 {
+    color: white;
+    margin: 0;
+}
+header p {
+    color: #ccc;
+    font-family: var(--font-header);
+}
+
+/* --- Barra de Navegación --- */
+#navbar {
+    background: var(--card-bg-color);
+    padding: 15px 0;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    transition: all 0.3s ease;
+}
+#navbar.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+#navbar a {
+    color: var(--secondary-color);
+    margin: 0 15px; /* Espacio ajustado para más items */
+    text-decoration: none;
+    font-family: var(--font-header);
+    font-weight: 700;
+    transition: color 0.3s ease;
+    font-size: 0.9em; /* Tamaño ajustado para más items */
+}
+#navbar a:hover, #navbar a.active {
+    color: var(--accent-color);
+}
+
+main {
+    padding-top: 20px;
+}
+
+/* --- Sección Protagonistas --- */
+.protagonistas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+.profile-card {
+    background: #fafafa;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: flex; /* Para centrar verticalmente con flex-direction */
+    flex-direction: column; /* Apila los elementos verticalmente */
+    align-items: center; /* Centra horizontalmente */
+}
+.profile-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+.profile-image {
+    width: 100px; 
+    height: 100px;
+    border-radius: 50%; 
+    object-fit: contain; 
+    margin-bottom: 15px;
+    border: 3px solid var(--accent-color); 
+}
+.profile-card h3 { margin: 10px 0 5px 0; }
+.profile-card h4 {
+    font-size: 0.9em;
+    font-weight: 400;
+    color: #666;
+    margin: 0 0 15px 0;
+}
+.status {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 15px;
+    font-size: 0.8em;
+    font-weight: 700;
+    color: white;
+    font-family: var(--font-header);
+    margin-bottom: 10px; /* Añadido para separar del párrafo */
+}
+.suspendido { background-color: #e74c3c; }
+.activa { background-color: #2ecc71; }
+.vacante { background-color: #95a5a6; }
+.profile-card p {
+    font-size: 0.9em;
+    margin-top: auto; /* Empuja el párrafo hacia abajo si hay espacio extra */
+}
+
+/* --- Línea de Tiempo --- */
+.timeline {
+    position: relative;
+    padding: 20px 0;
+}
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 100%;
+    background-color: var(--accent-color);
+}
+.timeline-item {
+    position: relative;
+    width: 50%;
+    margin-bottom: 40px;
+}
+.timeline-item:nth-child(odd) {
+    left: 0;
+    padding-right: 40px;
+    text-align: right;
+}
+.timeline-item:nth-child(even) {
+    left: 50%;
+    padding-left: 40px;
+}
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    width: 16px;
+    height: 16px;
+    background-color: white;
+    border: 3px solid var(--accent-color);
+    border-radius: 50%;
+    z-index: 1;
+}
+.timeline-item:nth-child(odd)::after {
+    right: -8px; /* Ajustado para centrar el punto */
+}
+.timeline-item:nth-child(even)::after {
+    left: -8px;  /* Ajustado para centrar el punto */
+}
+.timeline-content {
+    padding: 20px;
+    background: var(--background-color);
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+.timeline-content h3 {
+    margin-top: 0;
+}
+
+/* --- Animaciones al hacer Scroll --- */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Acordeón --- */
+.accordion-item {
+    border-bottom: 1px solid #ddd;
+}
+.accordion-item:last-child {
+    border-bottom: none; /* Evita doble borde en el último item */
+}
+.accordion-header {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 18px 20px;
+    font-size: 1.1em;
+    font-family: var(--font-header);
+    font-weight: 700;
+    color: var(--secondary-color);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: relative; /* Para el pseudo-elemento */
+}
+.accordion-header::after {
+    content: '\f078'; /* Font Awesome down arrow */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    float: right;
+    transition: transform 0.3s;
+}
+.accordion-header.active::after {
+    transform: rotate(180deg);
+}
+.accordion-header:hover {
+    background-color: #f0f0f0;
+}
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    padding: 0 20px;
+}
+.accordion-content p {
+    margin: 15px 0; /* Espaciado interno del contenido del acordeón */
+}
+
+
+/* --- DataTables Estilos --- */
+#cronologia-table_wrapper {
+    margin-top: 20px;
+}
+.dataTables_wrapper .dataTables_filter input,
+.dataTables_wrapper .dataTables_length select {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
+    margin-left: 5px;
+}
+
+/* --- Lista de Fuentes --- */
+.source-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+.source-list li {
+    margin-bottom: 8px;
+    padding-left: 20px;
+    position: relative;
+}
+.source-list li::before {
+    content: '\f0c1'; /* Ícono de enlace de Font Awesome */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
+.source-list a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+.source-list a:hover {
+    text-decoration: underline;
+    color: var(--accent-color);
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    background-color: var(--primary-color);
+    color: #ccc;
+    font-size: 0.9em;
+    margin-top: 40px;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) { /* Ajuste para más items en nav */
+    #navbar a {
+        margin: 0 10px;
+        font-size: 0.85em;
+    }
+}
+
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 15px; /* Ajuste para que no esté pegado al borde */
+    }
+    .timeline-item {
+        width: 100%;
+        left: 0 !important;
+        padding-left: 50px; /* Espacio para el punto y la línea */
+        padding-right: 0;
+        text-align: left !important;
+    }
+    .timeline-item::after {
+        left: 7px !important; /* Alinea el punto con la línea */
+    }
+    #navbar a {
+        display: block; /* Apila los enlaces en pantallas pequeñas */
+        margin: 8px 0;
+    }
+    .protagonistas-grid {
+        grid-template-columns: 1fr; /* Una columna en móviles */
+    }
+}
