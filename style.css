@@ -151,7 +151,6 @@ main {
 .vacante { background-color: #95a5a6; }
 .profile-card p {
     font-size: 0.9em;
-    margin-top: auto; /* Empuja el párrafo hacia abajo si hay espacio extra */
 }
 
 /* --- Línea de Tiempo --- */
